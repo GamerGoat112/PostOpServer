@@ -2,7 +2,6 @@ const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
 const executeFlow = require('./twilio.js');
-const sendSms = require('./test');
 
 dotenv.config();
 const app = express();
