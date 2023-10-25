@@ -8,7 +8,7 @@ const executeFlow = (phone, treatment, apptDate) => {
   client.studio.v2.flows('FW5ed3a14fd7b0b1a39c7de8a2cabfcc38')
     .executions
     .create({
-       to: phone,
+       to: user.phone,
        from: process.env.TWILIO_PHONE_NUMBER,
        parameters: {
         treatment: treatment,
