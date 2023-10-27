@@ -26,7 +26,7 @@ app.post('/users', (req, res) => {
   
     executeFlow(user.phone, user.treatment, user.apptDate);
     
-    res.status(201).send({
+    res.status(201).json({
       message: 'Account created successfully, kindly check your phone to activate your account!',
       data: user
     })
