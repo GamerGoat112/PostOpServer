@@ -1,6 +1,6 @@
 {
   "scripts":{
-    "build" : "npm install body-parser dotenv express twilio",
+    "build" : "npm install",
     "start": "node index.js"
   },
   "dependencies": {
