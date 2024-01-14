@@ -1,10 +1,15 @@
 const dotenv = require('dotenv');
+//Comment out for release
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const executeFlow = require('./twilio.js');
 
 dotenv.config();
 const app = express();
+
+//Enable CORS for all routes Comment out for release
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
