@@ -1,7 +1,7 @@
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
 
 const executeFlow = (phone, treatment, apptDate) => {
   const client = require('twilio')(accountSid, authToken);
@@ -18,4 +18,20 @@ const executeFlow = (phone, treatment, apptDate) => {
     .then(execution => console.log('Execution created with SID: ', execution.sid));
 }
 
-module.exports = executeFlow;
+async function sendMessage(phone, messageBody) {
+  console.log('sendMessage called with:', { phone, messageBody });
+  try {
+    const message = await client.messages.create({
+      body: messageBody,
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: phone,
+    });
+    console.log(`Message sent: ${message.sid}`);
+    return message;
+  } catch (error) {
+    console.error('Error sending message:', error);
+    throw error;
+  }
+}
+
+module.exports = { executeFlow, sendMessage };
