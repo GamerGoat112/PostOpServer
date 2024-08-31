@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fb83e7d992324c62adf48d023e0e08c2 }}/npulsipher4/postop:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fb83e7d992324c62adf48d023e0e08c2 }}/npulsipher4/postop-server:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
