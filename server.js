@@ -9,7 +9,6 @@ const { executeFlow, sendMessage } = require('./twilio.js');
 dotenv.config();
 const app = express();
 
-// Replace the existing custom middleware with this:
 app.use(cors({
   origin: 'https://postopweb.azurewebsites.net',
   methods: ['GET', 'POST', 'OPTIONS'],
