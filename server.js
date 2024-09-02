@@ -85,9 +85,9 @@ function parseDelay(delay) {
 
 app.post('/users', (req, res) => {
   const { treatment, phone } = req.body;
-  console.log('Received request:', { treatment, apptDate, phone });
+  console.log('Received request:', { treatment, phone });
 
-  if (!treatment || !apptDate || !phone) {
+  if (!treatment || !phone) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
