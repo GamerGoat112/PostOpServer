@@ -84,7 +84,7 @@ function parseDelay(delay) {
 }
 
 app.post('/users', (req, res) => {
-  const { treatment, apptDate, phone } = req.body;
+  const { treatment, phone } = req.body;
   console.log('Received request:', { treatment, apptDate, phone });
 
   if (!treatment || !apptDate || !phone) {
@@ -92,9 +92,9 @@ app.post('/users', (req, res) => {
   }
 
   // Convert apptDate string to Date object
-  const apptDateTime = new Date(apptDate);
+  const apptDate = new Date();
 
-  const user = { treatment, apptDate: apptDateTime, phone };
+  const user = { treatment, apptDate, phone };
 
   userDatabase.push(user);
 
