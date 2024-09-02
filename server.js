@@ -9,12 +9,17 @@ const { executeFlow, sendMessage } = require('./twilio.js');
 dotenv.config();
 const app = express();
 
-// Update the CORS configuration
-app.use(cors({
-  origin: 'https://postopweb.azurewebsites.net',
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// Add this custom middleware for CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://postopweb.azurewebsites.net');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
