@@ -9,7 +9,13 @@ const { executeFlow, sendMessage } = require('./twilio.js');
 dotenv.config();
 const app = express();
 
-app.use(cors());
+// Update the CORS configuration
+app.use(cors({
+  origin: 'https://postopweb.azurewebsites.net',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
